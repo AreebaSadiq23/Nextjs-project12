@@ -115,27 +115,27 @@ export default function UnitConverter() {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-[radial-gradient(circle_at_center,_#f0f0f0,_#d0d0d0)]">
-      <div className="max-w-md w-full p-6 bg-white rounded-lg shadow-md">
-        <h1 className="text-2xl font-bold mb-4 text-center">Unit Converter</h1>
-        <p className="text-sm mb-6 text-center">
+    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-900">
+      <div className="max-w-md w-full p-6 bg-gray-800 rounded-lg shadow-md">
+        <h1 className="text-2xl font-bold mb-4 text-white text-center">Unit Converter</h1>
+        <p className="text-sm mb-6 text-white text-center">
           Convert values between different units.
         </p>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="space-y-2">
-            <Label htmlFor="input-unit">From</Label>
-            <Select onValueChange={handleInputUnitChange}>
-              <SelectTrigger>
+            <Label htmlFor="input-unit" className="text-white">From</Label>
+            <Select onValueChange={handleInputUnitChange} className="bg-white text-gray-900">
+              <SelectTrigger className="bg-white text-gray-900 border border-gray-300">
                 <SelectValue placeholder="Select unit" />
               </SelectTrigger>
-              <SelectContent>
+              <SelectContent className="bg-white text-gray-900">
                 {Object.entries(unitTypes).map(([category, units]) => (
                   <SelectGroup key={category}>
-                    <SelectLabel>
+                    <SelectLabel className="text-gray-900">
                       {category.charAt(0).toUpperCase() + category.slice(1)}
                     </SelectLabel>
                     {units.map((unit) => (
-                      <SelectItem key={unit} value={unit}>
+                      <SelectItem key={unit} value={unit} className="bg-white text-gray-900">
                         {unit}
                       </SelectItem>
                     ))}
@@ -145,19 +145,19 @@ export default function UnitConverter() {
             </Select>
           </div>
           <div className="space-y-2">
-            <Label htmlFor="output-unit">To</Label>
-            <Select onValueChange={handleOutputUnitChange}>
-              <SelectTrigger>
+            <Label htmlFor="output-unit" className="text-white">To</Label>
+            <Select onValueChange={handleOutputUnitChange} className="bg-white text-gray-900">
+              <SelectTrigger className="bg-white text-gray-900 border border-gray-300">
                 <SelectValue placeholder="Select unit" />
               </SelectTrigger>
-              <SelectContent>
+              <SelectContent className="bg-white text-gray-900">
                 {Object.entries(unitTypes).map(([category, units]) => (
                   <SelectGroup key={category}>
-                    <SelectLabel>
+                    <SelectLabel className="text-gray-900">
                       {category.charAt(0).toUpperCase() + category.slice(1)}
                     </SelectLabel>
                     {units.map((unit) => (
-                      <SelectItem key={unit} value={unit}>
+                      <SelectItem key={unit} value={unit} className="bg-white text-gray-900">
                         {unit}
                       </SelectItem>
                     ))}
@@ -167,29 +167,29 @@ export default function UnitConverter() {
             </Select>
           </div>
           <div className="space-y-2 col-span-2">
-            <Label htmlFor="input-value">Value</Label>
+            <Label htmlFor="input-value" className="text-white">Value</Label>
             <Input
               id="input-value"
               type="number"
               placeholder="Enter value"
               value={inputValue || ""}
               onChange={handleInputChange}
-              className="w-full"
+              className="w-full bg-white text-gray-900"
             />
           </div>
           <Button
             type="button"
-            className="col-span-2 bg-blue-500 text-white hover:bg-blue-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 rounded-lg border border-blue-500"
+            className="col-span-2 bg-blue-600 text-white hover:bg-blue-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 rounded-lg border border-blue-500"
             onClick={convertValue}
           >
             Convert
           </Button>
         </div>
         <div className="mt-6 text-center">
-          <div className="text-4xl font-bold">
+          <div className="text-4xl font-bold text-white">
             {convertedValue !== null ? convertedValue.toFixed(2) : "0"}
           </div>
-          <div className="text-gray-500">
+          <div className="text-gray-300">
             {outputUnit ? outputUnit : "Unit"}
           </div>
         </div>
